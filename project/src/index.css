@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Cal Sans';
+  src: url('https://cdn.jsdelivr.net/gh/bedlaj/font-subset@master/CalSans-SemiBold/subset.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --neon-blue: #00f3ff;
+  --neon-red: #ff0055;
+  --neon-green: #00ff66;
+  --dark-bg: #050718;
+  --deep-blue: #0a0b3b;
+}
+
+@layer base {
+  html {
+    font-family: 'Cal Sans', system-ui, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  body {
+    @apply bg-[#050718] text-white overflow-x-hidden;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--deep-blue) 100%);
+  }
+}
+
+@layer components {
+  .quiz-container {
+    @apply max-w-4xl mx-auto p-6 md:p-8 relative z-10;
+  }
+  
+  .neon-text {
+    @apply font-orbitron;
+    text-shadow: 0 0 5px var(--neon-blue), 0 0 15px var(--neon-blue);
+  }
+  
+  .neon-text-red {
+    @apply font-orbitron;
+    text-shadow: 0 0 5px var(--neon-red), 0 0 15px var(--neon-red);
+  }
+  
+  .neon-text-green {
+    @apply font-orbitron;
+    text-shadow: 0 0 5px var(--neon-green), 0 0 15px var(--neon-green);
+  }
+  
+  .neon-border {
+    @apply border-2 border-[#00f3ff] rounded-lg;
+    box-shadow: 0 0 5px var(--neon-blue), 0 0 15px var(--neon-blue) inset;
+  }
+  
+  .neon-border-red {
+    @apply border-2 border-[#ff0055] rounded-lg;
+    box-shadow: 0 0 5px var(--neon-red), 0 0 15px var(--neon-red) inset;
+  }
+  
+  .neon-border-green {
+    @apply border-2 border-[#00ff66] rounded-lg;
+    box-shadow: 0 0 5px var(--neon-green), 0 0 15px var(--neon-green) inset;
+  }
+  
+  .glass-card {
+    @apply backdrop-blur-sm bg-white/10 border border-white/20 rounded-xl shadow-xl;
+    transition: all 0.3s ease;
+  }
+  
+  .glass-card:hover {
+    @apply bg-white/15 border-white/30;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  .futuristic-button {
+    @apply px-6 py-3 rounded-lg font-orbitron font-bold text-white transition-all duration-300 relative overflow-hidden;
+    background: linear-gradient(45deg, #0a0a2a, #1a1a4a);
+    border: 1px solid rgba(0, 243, 255, 0.5);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+  }
+  
+  .futuristic-button:hover {
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+    transform: translateY(-2px);
+  }
+  
+  .futuristic-button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: rotate(30deg);
+    transition: transform 0.5s ease-out;
+  }
+  
+  .futuristic-button:hover::after {
+    transform: rotate(30deg) translate(50%, 50%);
+  }
+  
+  .option-glow {
+    animation: optionGlow 1s ease-out;
+  }
+  
+  @keyframes optionGlow {
+    0% {
+      background: linear-gradient(45deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0);
+    }
+    50% {
+      background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.4));
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+      background: linear-gradient(45deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0);
+    }
+  }
+  
+  .background-grid {
+    background-image: 
+      linear-gradient(rgba(66, 71, 112, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(66, 71, 112, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  .pulse-animation {
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .spin-slow {
+    animation: spin 30s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
